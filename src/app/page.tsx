@@ -4,7 +4,6 @@ import { useState, useEffect } from "react";
 import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
 import { CommandPalette } from "@/components/layout/command-palette";
-import { LoadingScreen } from "@/components/layout/loading-screen";
 import { Hero } from "@/components/sections/hero";
 import { About } from "@/components/sections/about";
 import { FeaturedProjects } from "@/components/sections/featured-projects";
@@ -34,7 +33,6 @@ export default function Home() {
 
   return (
     <>
-      <LoadingScreen />
       <Navbar onCommandOpen={() => setCommandOpen(true)} />
       <CommandPalette open={commandOpen} onClose={() => setCommandOpen(false)} />
 

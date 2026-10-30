@@ -31,10 +31,8 @@ export const impactMetrics = [
 ];
 
 export const aboutNarrative = [
-  "I got into engineering because I hate watching people do things manually that a machine could do better. The first time I saw a colleague spend three weeks converting reports by hand, I thought — there has to be a better way. That instinct drives everything I build.",
-  "At R Systems, I design automation systems for enterprise clients. Not scripts that solve one problem once, but generic engines that handle hundreds of variations without a single hardcoded field name. When I built the Oracle-to-Power-BI migration toolkit, the goal was not just converting reports — it was making conversion unnecessary as a manual task.",
-  "What excites me most is the intersection of data engineering and intelligent automation. Taking a messy, unstructured enterprise problem — 34,000 lines of XML, legacy PL/SQL, undocumented report formats — and designing a clean pipeline that processes it all automatically. That is the kind of engineering I find deeply satisfying.",
-  "I believe great engineering is invisible. When my tools work well, nobody thinks about the conversion process. They just get their Power BI dashboards, their SyteLine forms, their workforce plans — and move on. That is the standard I hold myself to.",
+  "I got into engineering because I hate watching people do work a machine could do better. The first time I saw a colleague spend three weeks converting reports by hand, the job became obvious: remove that work, instead of doing it faster by hand.",
+  "At R Systems I design generic automation engines for enterprise clients. The Oracle-to-Power BI toolkit, the SSRS to SyteLine converter, and the GCC planning platform follow the same rule: no hardcoded field names, and a pipeline a teammate can extend.",
 ];
 
 export const engineeringPhilosophy = [
@@ -127,6 +125,7 @@ export interface FeaturedProject {
   engineeringDecisions: string[];
   techStack: string[];
   impact: { metric: string; label: string };
+  outcome: string;
   lessonsLearned: string[];
   gradient: string;
 }
@@ -165,6 +164,8 @@ export const featuredProjects: FeaturedProject[] = [
     ],
     techStack: ["Python", "Flask", "SQL", "Power BI", "Oracle", "DAX", "Power Query M", "Databricks"],
     impact: { metric: "85-90%", label: "of migration automated" },
+    outcome:
+      "Each report took 2–3 days by hand. The same conversion now runs through the pipeline in minutes.",
     lessonsLearned: [
       "Generic solutions require significantly more upfront design but save exponentially more time at scale",
       "Financial report migration demands deterministic translation — LLMs are too unpredictable for DAX generation",
@@ -203,6 +204,8 @@ export const featuredProjects: FeaturedProject[] = [
     ],
     techStack: ["FastAPI", "React", "TypeScript", "Azure", "GPT-4o", "LangGraph", "PostgreSQL", "Docker", "Kubernetes"],
     impact: { metric: "Months → Days", label: "planning time reduced" },
+    outcome:
+      "Planning a Global Capability Center took months of consulting. The platform brings that down to days.",
     lessonsLearned: [
       "Hexagonal architecture pays off when you need to swap AI providers — we switched embedding models twice",
       "Multi-tenant RAG requires careful chunk isolation; a shared vector store with tenant filters works better than per-tenant stores",
@@ -241,6 +244,8 @@ export const featuredProjects: FeaturedProject[] = [
     ],
     techStack: ["Python", "XML", "SQL", "Infor SyteLine", "SSRS"],
     impact: { metric: "100%", label: "conversion rate achieved" },
+    outcome:
+      "A 34,000-line SSRS report converts into a SyteLine form, with no hardcoded field names.",
     lessonsLearned: [
       "Pipeline architecture with clear stage boundaries makes debugging 34,000-line XML tractable",
       "Config-driven mapping is essential when the target format evolves across versions",

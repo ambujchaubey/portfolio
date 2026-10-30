@@ -2,7 +2,8 @@
 
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
-import { personalInfo, aboutNarrative } from "@/data/resume";
+import { GraduationCap } from "lucide-react";
+import { personalInfo, aboutNarrative, education } from "@/data/resume";
 
 export function About() {
   const ref = useRef(null);
@@ -106,26 +107,18 @@ export function About() {
               ))}
             </div>
 
-            {/* Quick stats */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ delay: 0.8, duration: 0.6 }}
-              className="mt-10 grid grid-cols-3 gap-4"
+              className="mt-8 flex items-start gap-3 rounded-2xl border border-white/10 bg-white/5 px-5 py-4"
             >
-              {[
-                { label: "Years Coding", value: "4+" },
-                { label: "Projects Delivered", value: "15+" },
-                { label: "Certifications", value: "6+" },
-              ].map((stat, i) => (
-                <div
-                  key={i}
-                  className="rounded-2xl border border-white/10 bg-white/5 p-4 text-center backdrop-blur-sm"
-                >
-                  <p className="text-2xl font-bold text-white">{stat.value}</p>
-                  <p className="mt-1 text-xs text-gray-500">{stat.label}</p>
-                </div>
-              ))}
+              <GraduationCap className="mt-0.5 h-5 w-5 shrink-0 text-cyan-400" />
+              <div>
+                <p className="text-sm font-medium text-white">{education[0].institution}</p>
+                <p className="mt-1 text-sm text-gray-400">{education[0].degree}</p>
+                <p className="mt-1 text-xs text-gray-500">{education[0].duration}</p>
+              </div>
             </motion.div>
           </motion.div>
         </div>

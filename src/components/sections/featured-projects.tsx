@@ -2,7 +2,7 @@
 
 import { useState, useRef } from "react";
 import { motion, useInView, AnimatePresence } from "framer-motion";
-import { ArrowRight, ExternalLink, ChevronDown } from "lucide-react";
+import { ArrowRight, ChevronDown } from "lucide-react";
 import Link from "next/link";
 import { featuredProjects } from "@/data/resume";
 
@@ -63,7 +63,7 @@ export function FeaturedProjects() {
                 {/* Header - always visible */}
                 <button
                   onClick={() => toggle(project.slug)}
-                  className="flex w-full items-center justify-between p-6 text-left transition-colors hover:bg-white/[0.02]"
+                  className="flex w-full items-center justify-between p-6 pb-4 text-left transition-colors hover:bg-white/[0.02]"
                 >
                   <div className="flex items-center gap-6">
                     {/* Project number */}
@@ -99,6 +99,27 @@ export function FeaturedProjects() {
                     </motion.div>
                   </div>
                 </button>
+
+                <div className="px-6 pb-6">
+                  <div className="flex flex-col gap-2 sm:flex-row sm:flex-wrap sm:items-center">
+                    {project.architectureSteps.slice(0, 4).map((step, si, steps) => (
+                      <div key={step.label} className="flex items-center gap-2">
+                        <span
+                          className={`flex h-6 w-6 shrink-0 items-center justify-center rounded-lg bg-gradient-to-r ${project.gradient} text-xs font-bold text-white`}
+                        >
+                          {si + 1}
+                        </span>
+                        <span className="text-sm text-gray-300">{step.label}</span>
+                        {si < steps.length - 1 && (
+                          <ArrowRight className="hidden h-3.5 w-3.5 text-gray-600 sm:block" />
+                        )}
+                      </div>
+                    ))}
+                  </div>
+                  <p className="mt-4 max-w-3xl text-sm leading-relaxed text-gray-300">
+                    {project.outcome}
+                  </p>
+                </div>
 
                 {/* Expanded content */}
                 <AnimatePresence>
@@ -138,13 +159,16 @@ export function FeaturedProjects() {
                               <h4 className="text-xs font-semibold uppercase tracking-wider text-blue-400">
                                 Architecture
                               </h4>
-                              <div className="mt-3 space-y-2">
-                                {project.architectureSteps.slice(0, 5).map((step, si) => (
-                                  <div key={si} className="flex items-center gap-3">
-                                    <span className={`flex h-6 w-6 items-center justify-center rounded-lg bg-gradient-to-r ${project.gradient} text-xs font-bold text-white`}>
+                              <div className="mt-3 space-y-3">
+                                {project.architectureSteps.map((step, si) => (
+                                  <div key={step.label} className="flex items-start gap-3">
+                                    <span className={`mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-lg bg-gradient-to-r ${project.gradient} text-xs font-bold text-white`}>
                                       {si + 1}
                                     </span>
-                                    <span className="text-sm text-gray-400">{step.label}</span>
+                                    <div>
+                                      <p className="text-sm text-gray-200">{step.label}</p>
+                                      <p className="text-xs leading-relaxed text-gray-500">{step.description}</p>
+                                    </div>
                                   </div>
                                 ))}
                               </div>
